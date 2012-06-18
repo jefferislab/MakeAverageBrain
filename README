@@ -1,0 +1,32 @@
+########
+#README#
+########
+
+This git repo contains the files and folders sufficient to generate a template brain given
+a set of images to be registered and reference brain on which to register them.
+
+Input images should be put in the images directory, and the template brain should be put in
+the refbrain directory.
+
+The commands directory contains three shell scripts that are used to submit jobs to the
+Sun GridEngine system used by the LMB's computational cluster.
+
+makeAverageBrain-sync.sh successively calls warpcmdIteration.sh and avgcmdIterationPadOut.sh
+to generated registrations and uses those registration parameters to generate shape and
+intensity averaged brains.
+
+To use these scripts, change directory to the top of your registration folder (ie the folder
+that contains this git repo) and run the command
+
+	sh commands/makeAverageBrain-sync.sh 
+	
+to get instructions on how to use these scripts. In general you will need to pass the script
+the name of your reference brain (eg if your initial template brain is templateBrain-1,
+you will want to pass the script "templateBrain-" without the quotes), and the number of iterations
+over which to average the brains.
+
+A complete command will look something like this:
+
+	sh commands/makeAverageBrain-sync.sh templateBrain- 5 > & jobs/mylogfile.txt &
+
+The script will generate jobs, Registration, reformatted, and average directories as needed.
