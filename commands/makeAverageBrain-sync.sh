@@ -88,4 +88,4 @@ SYMREFPATH="$REGROOT/refbrain/$SYMREFBRAIN.nrrd"
 
 echo Making $NEWREFBRAIN symmetric
 # make the brain symmetric
-qsub -wd "$REGROOT/jobs" -S /bin/bash -m e -M ${LMBUSER}@lmb.internal -pe smp 8 "$REGROOT/commands/symmetricOutput.sh" ${NEWREFPATH} ${SYMREFPATH} ${GJROOT} ${REGROOT}
+qsub -wd "$REGROOT/jobs" -S /bin/bash -m eas -M ${LMBUSER}@lmb.internal -pe smp 8 "$REGROOT/commands/symmetricOutput.sh" ${NEWREFPATH} ${SYMREFPATH} ${GJROOT} ${REGROOT}

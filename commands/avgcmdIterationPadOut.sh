@@ -8,6 +8,7 @@ REGBINDIR=$4
 MY_HOST=`hostname`
 LOCKID="$MY_HOST:$JOB_ID"
 
+export CMTK_NUM_THREADS=4 
 cd $REGROOT
 # Collect up the registration files we want
 # NB use echo so that shell expands *.list
