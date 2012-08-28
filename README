@@ -5,8 +5,22 @@
 This git repo contains the files and folders sufficient to generate a template brain given
 a set of images to be registered and reference brain on which to register them.
 
+Images
+------
+
 Input images should be put in the images directory, and the template brain should be put in
 the refbrain directory.
+
+Your reference brain should consist of a short name without any punctuation (letters/numbesr only) and should end in -1.nrrd eg
+
+FCWB-1.nrrd
+Dwf-1.nrrd
+
+The reason for the -1 is explained below, basically it is used as a counter for the iterative registration/averaging process.
+
+
+Code
+----
 
 The commands directory contains three shell scripts that are used to submit jobs to the
 Sun GridEngine system used by the LMB's computational cluster.
