@@ -65,7 +65,7 @@ while [ $i -le $NOITERATIONS ]; do
 	# which waits until (all?) array jobs are finished
 	CURREFBRAIN=${REFBRAIN}${i}
 	# passed REFBRAIN REGROOT REGBINDIR and MUNGERDIR variables
-	qsub -wd "$REGROOT/jobs" -sync yes -t 1-${NOIMAGES} -S /bin/bash -m eas -M ${LMBUSER}@lmb.internal -pe smp 8 "$REGROOT"/commands/warpcmdIteration.sh ${CURREFBRAIN} ${REGROOT} ${REGBINDIR} ${MUNGERDIR}
+	qsub -wd "$REGROOT/jobs" -sync yes -t 1-${NOIMAGES} -S /bin/bash -m eas -M ${LMBUSER}@lmb.internal -pe smp 4 "$REGROOT"/commands/warpcmdIteration.sh ${CURREFBRAIN} ${REGROOT} ${REGBINDIR} ${MUNGERDIR}
 	
 	# add one to $i and therefore the number of the refbrain e.g. IS2-1 goes to IS2-2
 	i=`echo "1 + $i" | bc`
