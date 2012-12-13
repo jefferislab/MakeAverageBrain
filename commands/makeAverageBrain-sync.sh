@@ -19,6 +19,8 @@ if [ -z "$1" -o -z "$2" ]; then
 	echo "REGROOT - images    (where your input images (*.nrrd) live)"
 	echo "        - refbrain  (where your nrrd reference brain lives)"
 	echo "        - commands  (location of script files)"
+	echo "you change the lmb user name to whom email is sent by doing"
+	echo "export SGE_EMAIL=<username> before running the script"
 	exit
 fi
 
@@ -53,7 +55,12 @@ export REGBINDIR="$GJROOT/dev/neuroanat/cmtk/core/build/bin"
 mkdir -p "$REGROOT/jobs"
 mkdir -p "$REGROOT/average"
 
-LMBUSER=`whoami`
+
+if [ -z "$SGE_EMAIL" ]; then
+	LMBUSER=`whoami`
+else
+	LMBUSER=$SGE_EMAIL
+fi
 
 i=1
 while [ $i -le $NOITERATIONS ]; do
