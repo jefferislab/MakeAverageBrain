@@ -19,8 +19,9 @@ if [ -z "$1" -o -z "$2" ]; then
 	echo "REGROOT - images    (where your input images (*.nrrd) live)"
 	echo "        - refbrain  (where your nrrd reference brain lives)"
 	echo "        - commands  (location of script files)"
-	echo "you change the lmb user name to whom email is sent by doing"
-	echo "export SGE_EMAIL=<username> before running the script"
+	echo "you change the lmb user name to whom email is sent by doing e.g."
+	echo "setenv SGE_EMAIL lgoetz"
+	echo "before running the script"
 	exit
 fi
 
