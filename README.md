@@ -4,7 +4,17 @@ This git repo contains the files and folders sufficient to generate a template
 brain given a set of images to be registered and reference brain on which to
 register them.
 
-# Usage 
+# Usage
+# Setup
+
+The general idea is that you clone this repository for each new template brain project. e.g.
+
+    git clone jgit:MakeAverageBrain.git <NameOfNewTemplate>
+or
+    git clone git@github.com:jefferis/MakeAverageBrain.git <NameOfNewTemplate>
+
+then fill the directories as described below, and finally run the code.
+
 ## Images
 
 Sample images should be put in the images directory, and the reference brain should be put in
@@ -80,6 +90,6 @@ Search for "LMB" and "GJ" (case insensitive) to see what you need to change.
 
 1. Extract all local configuration details into a single config file
 2. Rewrite the whole thing to cope with a more generic environment
-3. Remove the Grid Engine dependency
+3. Remove the specific Grid Engine dependency
 
 (2 and 3 could perhaps be done by converting to R and using the BatchJobs package)
