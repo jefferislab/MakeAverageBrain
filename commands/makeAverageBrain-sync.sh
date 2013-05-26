@@ -11,10 +11,13 @@ REGROOT=$3
 PROGNAME=`basename $0`
 
 if [ -z "$1" -o -z "$2" ]; then 
-	echo "usage: $PROGNAME <REFBRAIN> <numiterations> [REGROOT]\n"
-	echo "If REGROOT is missing, will use current directory\n"
+	echo "usage: $PROGNAME <REFBRAIN> <numiterations> [REGROOT]"
+	echo ""
+	echo "If REGROOT is missing, will use current directory"
+	echo ""
 	echo "Normally called something like this:"
-	echo "sh commands/$PROGNAME <REFBRAIN> <numiterations> >& jobs/mylogfile.txt &\n"
+	echo "sh commands/$PROGNAME <REFBRAIN> <numiterations> >& jobs/mylogfile.txt &"
+	echo ""
 	echo "Directory structure should look like this:"
 	echo "REGROOT - images    (where your input images (*.nrrd) live)"
 	echo "        - refbrain  (where your nrrd reference brain lives)"
