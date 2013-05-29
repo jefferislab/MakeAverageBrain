@@ -10,7 +10,9 @@ register them.
 The general idea is that you clone this repository for each new template brain project. e.g.
 
     git clone jgit:MakeAverageBrain.git <NameOfNewTemplate>
+
 or
+
     git clone git@github.com:jefferis/MakeAverageBrain.git <NameOfNewTemplate>
 
 then fill the directories as described below, and finally run the code.
