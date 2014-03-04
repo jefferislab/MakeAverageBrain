@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# passed REFBRAIN REGROOT REGBINDIR and MUNGERDIR vaurables
+# passed REFBRAIN REGROOT REGBINDIR and MUNGERDIR variables
 MY_HOST=`hostname`
 LOCKID="$MY_HOST:$JOB_ID:$SGE_TASK_ID"
 REFBRAIN=$1
