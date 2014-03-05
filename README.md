@@ -32,16 +32,20 @@ These should be in nrrd format (use Fiji) and named in the following style:
     myimage3_01.nrrd
     anotherimage_01.nrrd
 
-i.e. the first part of the filename should not contain any underscores and this should be followed by the channel number of the image (01) in all cases and then ".nrrd". Be careful to use lowercase for nrrd as this can cause problems later.
+i.e. the first part of the filename should not contain any underscores and this 
+should be followed by the channel number of the image (01) in all cases and then 
+".nrrd". Be careful to use lowercase for nrrd as this can cause problems later.
 
 ### Reference Image
 
-Your reference brain should consist of a short name without any punctuation (letters/numbers only) and should end in -1.nrrd eg
+Your reference brain should consist of a short name without any punctuation 
+(letters/numbers only) and should end in -1.nrrd eg
 
     FCWB-1.nrrd
     Dwf-1.nrrd
 
-The reason for the -1 is explained below, basically it is used as a counter for the iterative registration/averaging process.
+The reason for the -1 is explained below, basically it is used as a counter for 
+the iterative registration/averaging process.
 
 ## Code
 
@@ -70,7 +74,11 @@ The script will generate `jobs`, `Registration`, `reformatted`, and `average` di
 
 # Installation
 
-These scripts have been specificically designed and tested for the MRC LMB's compute cluster. Unfortunately (precisely because these are largely job control scripts) it has not been possible to remove these location specific issues from the code. Nevertheless they should at a minimum provide inspiration for anyone with some experience of computing in a cluster environment.
+These scripts have been specifically designed and tested for the MRC LMB's 
+compute cluster. Unfortunately (precisely because these are largely job control 
+scripts) it has not been possible to remove these location specific issues from 
+the code. Nevertheless they should at a minimum provide inspiration for anyone 
+with some experience of computing in a cluster environment.
 
 ## Dependencies
 With that said the dependencies are
@@ -80,7 +88,8 @@ With that said the dependencies are
 3. [R](http://www.r-project.org/)
 4. [R package nat](http://cran.r-project.org/web/packages/nat/index.html)
 
-Grid engine is the job control system that we use. It should be possible to use something different by replacing all cases of qsub.
+Grid engine is the job control system that we use. It should be possible to use 
+something different by replacing all cases of qsub.
 
 R/nat is used for a final step of placing the newly created average brain so 
 that its plane of symmetry is located at the central YZ plane of the image.
