@@ -14,4 +14,4 @@ REGROOT=$4
 
 cd "$REGROOT/commands"
 
-R --no-save --interactive --args ${NEWREFPATH} ${SYMREFPATH} ${GJROOT} < MakeSymmetricStandardBrain.R
+R --no-save --args ${NEWREFPATH} ${SYMREFPATH} ${GJROOT} < MakeSymmetricStandardBrain.R
