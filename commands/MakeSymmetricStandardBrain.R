@@ -44,7 +44,9 @@ MakeHalvedAffineRegistration<-function(infolder,outfolder){
 	reg=read.cmtkreg(infolder)
 	reg$registration$affine_xform$xlate=reg$registration$affine_xform$xlate/2
 	reg$registration$affine_xform$rotate=reg$registration$affine_xform$rotate/2
-	write.cmtkreg(reg,outfolder)
+	# only write a CMTK version 2.4 registration if we have CMTK >=3.0 available
+	cmtkv3=isTRUE(as.integer(substring(cmtk.dof2mat(version=TRUE),1,1))>=3)
+	write.cmtkreg(reg,outfolder,version=ifelse(cmtkv3,'2.4',NA))
 	return(outfolder)
 }
 
