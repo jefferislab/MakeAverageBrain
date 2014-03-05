@@ -14,7 +14,10 @@ NEWREFPATH = argPath[1]
 SYMREFPATH = argPath[2]
 GJROOT     = argPath[3]
 
-source(file.path(GJROOT,"/projects/AnalysisSuite/R/Code/Startup.R")) # for Jlab functions
+# for cmtk.reformatx
+if(!require(nat)) stop("Please run:\ninstall.packages("nat")\nin R!")
+# for RunCmdForNewerInput
+if(!require(nat.utils)) stop("Please run:\ninstall.packages("nat.utils")\nin R!")
 
 MakeFlippedImage<-function(infile,outfile,axis="x"){
 	if(missing(outfile))
@@ -38,16 +41,16 @@ MakeHalvedAffineRegistration<-function(infolder,outfolder){
 	if(missing(outfolder))
 		outfolder=sub("\\.list","-halved.list",infolder)
 	
-	reg=ReadIGSRegistration(infolder,ReturnRegistrationOnly=FALSE)
+	reg=read.cmtkreg(infolder)
 	reg$registration$affine_xform$xlate=reg$registration$affine_xform$xlate/2
 	reg$registration$affine_xform$rotate=reg$registration$affine_xform$rotate/2
-	WriteIGSRegistrationFolder(reg,outfolder)
+	write.cmtkreg(reg,outfolder)
 	return(outfolder)
 }
 
 # debug(MakeHalvedAffineRegistration)
 MakeSymmetricStandardBrain<-function(rawimage,symmetricimage){
-	flippedimage= MakeFlippedImage(rawimage)
+	flippedimage=MakeFlippedImage(rawimage)
 	
 	imagestem=sub("\\.[^.]+$","",basename(rawimage))
 	flippedimagestem=sub("\\.[^.]+$","",basename(flippedimage))
@@ -57,10 +60,8 @@ MakeSymmetricStandardBrain<-function(rawimage,symmetricimage){
 
 	halvedregfolder=MakeHalvedAffineRegistration(regfolder)
 
-	# ReformatImage(floating=rawimage,target=flippedimage,halvedregfolder,symmetricimage,dryrun=T)
-	ReformatImage(floating=rawimage,target=rawimage,halvedregfolder,symmetricimage)
-	# ReformatImage(floating=rawimage,target=rawimage,halvedregfolder,symmetricimage,
-	# 	reformatxPath="/Users/jefferis/Downloads/CMTK-1.4.3-Darwin-i386/bin/reformatx")
+	cmtk.reformatx(floating=rawimage,target=rawimage,registrations=halvedregfolder,
+		output=symmetricimage)
 }
 
 MakeSymmetricStandardBrain(NEWREFPATH,SYMREFPATH)
