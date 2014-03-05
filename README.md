@@ -78,11 +78,12 @@ With that said the dependencies are
 1. [CMTK](http://www.nitrc.org/projects/cmtk)
 2. [Sun/Oracle Grid Engine](http://gridscheduler.sourceforge.net)
 3. [R](http://www.r-project.org/)
-4. [AnalysisSuite](https://github.com/jefferis/AnalysisSuite)
+4. [R package nat](http://cran.r-project.org/web/packages/nat/index.html)
 
 Grid engine is the job control system that we use. It should be possible to use something different by replacing all cases of qsub.
 
-R+AnalysisSuite are used for a final step of placing the newly created average brain so that its plane of symmetry is located at the central YZ plane of the image.
+R/nat is used for a final step of placing the newly created average brain so 
+that its plane of symmetry is located at the central YZ plane of the image.
 
 ## Configuration
 
