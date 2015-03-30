@@ -40,6 +40,15 @@ else
 	$REGROOT=`cd $REGROOT; pwd`
 fi
 
+REFBRAINPATH=refbrain/"${REFBRAIN}".nrrd
+
+if [ -f "$REFBRAINPATH"]; then
+	echo "Using refbrain at $REFBRAINPATH"
+else
+	echo "Could not find refbrain at $REFBRAINPATH!"
+	exit
+fi
+
 echo "Registration root directory is $REGROOT"
 
 NOIMAGES=`ls -l ${REGROOT}/images/*.nrrd | wc -l`
