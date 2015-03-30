@@ -42,7 +42,7 @@ fi
 
 REFBRAINPATH=refbrain/"${REFBRAIN}".nrrd
 
-if [ -f "$REFBRAINPATH"]; then
+if [ -f "$REFBRAINPATH" ]; then
 	echo "Using refbrain at $REFBRAINPATH"
 else
 	echo "Could not find refbrain at $REFBRAINPATH!"
