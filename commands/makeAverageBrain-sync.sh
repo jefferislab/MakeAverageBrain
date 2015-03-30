@@ -40,7 +40,7 @@ else
 	$REGROOT=`cd $REGROOT; pwd`
 fi
 
-REFBRAINPATH=refbrain/"${REFBRAIN}".nrrd
+REFBRAINPATH=refbrain/"${REFBRAIN}1".nrrd
 
 if [ -f "$REFBRAINPATH" ]; then
 	echo "Using refbrain at $REFBRAINPATH"
