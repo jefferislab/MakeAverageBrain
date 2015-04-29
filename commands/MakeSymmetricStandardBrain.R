@@ -15,9 +15,9 @@ SYMREFPATH = argPath[2]
 GJROOT     = argPath[3]
 
 # for cmtk.reformatx
-if(!require(nat)) stop("Please run:\ninstall.packages("nat")\nin R!")
+if(!require(nat)) stop('Please run:\ninstall.packages("nat")\nin R!')
 # for RunCmdForNewerInput
-if(!require(nat.utils)) stop("Please run:\ninstall.packages("nat.utils")\nin R!")
+if(!require(nat.utils)) stop('Please run:\ninstall.packages("nat.utils")\nin R!')
 
 MakeFlippedImage<-function(infile,outfile,axis="x"){
 	if(missing(outfile))
