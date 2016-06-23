@@ -15,8 +15,8 @@ then fill the directories as described below, and finally run the code.
 
 ## Images
 
-Sample images should be put in the images directory, and the reference brain should be put in
-the refbrain directory.
+Sample images should be put in the **images** directory, and the reference brain should be put in
+the **refbrain** directory.
 
 
 ### Sample Images
