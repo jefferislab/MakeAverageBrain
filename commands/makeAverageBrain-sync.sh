@@ -93,7 +93,9 @@ while [ $i -le $NOITERATIONS ]; do
 
 	if [ ! -f "${REGROOT}/refbrain/${NEWREFBRAIN}.nrrd" ] ; then
 		# if average brain doesn't exist (eg if a run was interrupted then make it)
-		qsub -sync yes -wd "$REGROOT/jobs" -S /bin/bash -m eas -M ${LMBUSER}@lmb.internal -pe smp 8 "$REGROOT/commands/avgcmdIterationPadOut.sh" ${CURREFBRAIN} ${NEWREFBRAIN} ${REGROOT} ${REGBINDIR}
+		#qsub -sync yes -wd "$REGROOT/jobs" -S /bin/bash -m eas -M ${LMBUSER}@lmb.internal -pe smp 8 "$REGROOT/commands/avgcmdIterationPadOut.sh" ${CURREFBRAIN} ${NEWREFBRAIN} ${REGROOT} ${REGBINDIR}
+		cd "$REGROOT/jobs" && /bin/bash "$REGROOT/commands/avgcmdIterationPadOut.sh" ${CURREFBRAIN} ${NEWREFBRAIN} ${REGROOT} ${REGBINDIR}
+		cd "$REGROOT"
 	fi
 	if [ ! -f "${REGROOT}/refbrain/${NEWREFBRAIN}.nrrd" ] ; then
 		echo Exiting $PROGNAME since avg_adm failed to make $NEWREFBRAIN
