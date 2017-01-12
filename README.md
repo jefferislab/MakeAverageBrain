@@ -96,7 +96,7 @@ Search for "LMB" and "GJ" (case insensitive) to see what you need to change.
 
 # TODO
 
-1. Extract all local configuration details into a single config file
+1. Extract all local configuration details into a single config file (see Issue #3)
 2. Rewrite the whole thing to cope with a more generic environment
 3. Remove the specific Grid Engine dependency
 
