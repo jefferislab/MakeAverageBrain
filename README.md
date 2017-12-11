@@ -11,7 +11,9 @@ The general idea is that you clone this repository for each new template brain p
 
     git clone git@github.com:jefferis/MakeAverageBrain.git <NameOfNewTemplate>
 
-then fill the directories as described below, and finally run the code.
+then fill the directories as described below, and finally run the code. If you do not have git
+you can just [download the zip](https://github.com/jefferislab/MakeAverageBrain/archive/feature/average-on-hex.zip)
+file, expand and rename the resultant folder to <NameOfNewTemplate>.
 
 ## Images
 
