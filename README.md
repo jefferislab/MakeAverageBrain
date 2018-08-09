@@ -66,7 +66,7 @@ over which to average the brains.
 
 A complete command will look something like this:
 
-    sh commands/makeAverageBrain-sync.sh templateBrain- 5 > & jobs/mylogfile.txt &
+    sh commands/makeAverageBrain-sync.sh templateBrain- 5 >& jobs/mylogfile.txt &
 
 The script will generate `jobs`, `Registration`, `reformatted`, and `average` directories as needed.
 
