@@ -6,8 +6,8 @@ umask 002
 
 REFBRAIN=$1
 NOITERATIONS=$2
-REGROOT=$3
-AXIS=$4
+AXIS=$3
+REGROOT=$4
 
 PROGNAME=`basename $0`
 
@@ -19,8 +19,8 @@ if [ -z "$1" -o -z "$2" ]; then
 	echo ""
 	echo "Normally called something like this:"
 	echo "sh commands/$PROGNAME <REFBRAIN> <numiterations> >& jobs/mylogfile.txt &"
-	echo "  or"
-	echo "sh commands/$PROGNAME <REFBRAIN> <numiterations> <y> >& jobs/mylogfile.txt &"
+	echo "  or (flipping along y axis)"
+	echo "sh commands/$PROGNAME <REFBRAIN> <numiterations> y >& jobs/mylogfile.txt &"
 	echo ""
 	echo "Directory structure should look like this:"
 	echo "REGROOT - images    (where your input images (*.nrrd) live)"
