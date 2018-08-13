@@ -7,16 +7,20 @@ umask 002
 REFBRAIN=$1
 NOITERATIONS=$2
 REGROOT=$3
+AXIS=$4
 
 PROGNAME=`basename $0`
 
 if [ -z "$1" -o -z "$2" ]; then 
-	echo "usage: $PROGNAME <REFBRAIN> <numiterations> [REGROOT]"
+	echo "usage: $PROGNAME <REFBRAIN> <numiterations> [axis] [REGROOT]"
 	echo ""
 	echo "If REGROOT is missing, will use current directory"
+	echo "If axis is missing, will flip along x axis to symmetrise brain position"
 	echo ""
 	echo "Normally called something like this:"
 	echo "sh commands/$PROGNAME <REFBRAIN> <numiterations> >& jobs/mylogfile.txt &"
+	echo "  or"
+	echo "sh commands/$PROGNAME <REFBRAIN> <numiterations> <y> >& jobs/mylogfile.txt &"
 	echo ""
 	echo "Directory structure should look like this:"
 	echo "REGROOT - images    (where your input images (*.nrrd) live)"
@@ -26,6 +30,11 @@ if [ -z "$1" -o -z "$2" ]; then
 	echo "setenv SGE_EMAIL lgoetz"
 	echo "before running the script"
 	exit
+fi
+
+if [ -z "$AXIS" ]; then 
+  echo "Will flip along x axis to symmetrise brain position"
+  AXIS="x"
 fi
 
 if [ -z "$REGROOT" ]; then 
@@ -110,4 +119,7 @@ SYMREFPATH="$REGROOT/refbrain/$SYMREFBRAIN.nrrd"
 
 echo Making $NEWREFBRAIN symmetric
 # make the brain symmetric
-qsub -wd "$REGROOT/jobs" -S /bin/bash -m eas -M ${LMBUSER}@lmb.internal -pe smp 8 "$REGROOT/commands/symmetricOutput.sh" ${NEWREFPATH} ${SYMREFPATH} ${GJROOT} ${REGROOT}
+# qsub -wd "$REGROOT/jobs" -S /bin/bash -m eas -M ${LMBUSER}@lmb.internal -pe smp 8 "$REGROOT/commands/symmetricOutput.sh" ${NEWREFPATH} ${SYMREFPATH} ${GJROOT} ${REGROOT}
+
+cd "$REGROOT/jobs" && /bin/bash "$REGROOT/commands/symmetricOutput.sh" ${NEWREFPATH} ${SYMREFPATH} ${AXIS}
+cd "$REGROOT"

@@ -12,12 +12,17 @@ argPath=commandArgs(trailingOnly = TRUE)
 
 NEWREFPATH = argPath[1]
 SYMREFPATH = argPath[2]
-GJROOT     = argPath[3]
+AXIS       = argPath[3]
 
 # for cmtk.reformatx
 if(!require(nat)) stop('Please run:\ninstall.packages("nat")\nin R!')
 # for RunCmdForNewerInput
 if(!require(nat.utils)) stop('Please run:\ninstall.packages("nat.utils")\nin R!')
+
+AXIS = if(is.na(AXIS)) "x" else tolower(AXIS)
+
+if(!AXIS%in%c("x","y","z"))
+  stop("Unable to parse axis specification") 
 
 MakeFlippedImage<-function(infile,outfile,axis="x"){
 	if(missing(outfile))
@@ -51,8 +56,8 @@ MakeHalvedAffineRegistration<-function(infolder,outfolder){
 }
 
 # debug(MakeHalvedAffineRegistration)
-MakeSymmetricStandardBrain<-function(rawimage,symmetricimage){
-	flippedimage=MakeFlippedImage(rawimage)
+MakeSymmetricStandardBrain<-function(rawimage,symmetricimage, axis="x"){
+	flippedimage=MakeFlippedImage(rawimage, axis=axis)
 	
 	imagestem=sub("\\.[^.]+$","",basename(rawimage))
 	flippedimagestem=sub("\\.[^.]+$","",basename(flippedimage))
@@ -66,4 +71,4 @@ MakeSymmetricStandardBrain<-function(rawimage,symmetricimage){
 		output=symmetricimage)
 }
 
-MakeSymmetricStandardBrain(NEWREFPATH,SYMREFPATH)
+MakeSymmetricStandardBrain(NEWREFPATH, SYMREFPATH, AXIS)
