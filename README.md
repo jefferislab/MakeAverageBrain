@@ -70,6 +70,15 @@ A complete command will look something like this:
 
 The script will generate `jobs`, `Registration`, `reformatted`, and `average` directories as needed.
 
+### Symmetrisation step
+If you want to run the symmetrisation step alone (i.e. placing the final brain in an affine symmetric location)
+then you can do that like this:
+
+    cd /path/to/my/project/root
+    export REGROOT=`pwd` && commands/symmetricOutput.sh $REGROOT/refbrain/terkavg-5.nrrd $REGROOT/refbrain/terkavg-5-symmetric.nrrd y
+
+where `terkavg-5.nrrd` was the final average brain for this project and we wanted to flip along the y axis (rather than x).
+
 # Installation
 
 These scripts have been specifically designed and tested for the MRC LMB's 
