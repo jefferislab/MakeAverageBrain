@@ -9,6 +9,7 @@ AXIS=$3
 # since we are not qsubbing this any more, should just inherit path of main script
 echo "PATH=$PATH"
 
-cd "$REGROOT/commands"
+# should already be here
+# cd "$REGROOT/commands"
 
 R --no-save --args ${NEWREFPATH} ${SYMREFPATH} ${AXIS} < MakeSymmetricStandardBrain.R
